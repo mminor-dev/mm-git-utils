@@ -1,0 +1,43 @@
+{
+  "name": "branch-select",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/branch-select/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/branch-select",
+        "main": "libs/branch-select/src/index.ts",
+        "tsConfig": "libs/branch-select/tsconfig.lib.json",
+        "assets": ["libs/branch-select/*.md"]
+      }
+    },
+    "run": {
+      "command": "{projectRoot}/src/index.ts"
+    },
+    "pack": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["mkdir .packages", "npm pack dist/libs/branch-select  --pack-destination='.packages'"]
+        // "cwd": "{workspaceRoot}/dist/libs/branch-select"
+      }
+    },
+    // "publish": {
+    //   "command": "node tools/scripts/publish.mjs branch-select {args.ver} {args.tag}",
+    //   "dependsOn": ["build"]
+    // },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/branch-select/**/*.ts",
+          "libs/branch-select/package.json"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@mmgit/branch-select",
+  "version": "0.0.1",
+  "dependencies": {
+    "@swc/helpers": "~0.5.2"
+  },
+  "type": "module",
+  "bin": {
+    "git-branch-select": "./bin/index.ts"
+  }
+}
