@@ -1,6 +1,6 @@
 {
   "jsc": {
-    "target": "es2017",
+    "target": "ES2022",
     "parser": {
       "syntax": "typescript",
       "decorators": true,
@@ -15,7 +15,8 @@
     "loose": true
   },
   "module": {
-    "type": "nodenext"
+    "type": "nodenext",
+    "resolveFully": true
   },
   "sourceMaps": true,
   "exclude": [
