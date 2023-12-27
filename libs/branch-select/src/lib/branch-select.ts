@@ -1,11 +1,23 @@
-import chalk from 'chalk';
 import { execSync } from 'child_process';
+
+import chalk from 'chalk';
+import enquirer from 'enquirer';
 import figlet from 'figlet';
 
 /** main */
-export default function branchSelect() {
+export default async function branchSelect() {
   const branches = getBranches();
-  console.log(chalk.bgGreenBright(branches));
+  const choices = branches.map((name) => ({ name }));
+
+  const _rsp = await enquirer.prompt<{ branch: string }>({
+    name: 'branch',
+    message: 'select branch to checkout',
+    type: 'autocomplete',
+    choices,
+  });
+
+  const branch = trimBranchName(_rsp.branch);
+  return checkoutBranch(branch);
 }
 
 /** miscl */
@@ -16,8 +28,16 @@ export function banner() {
   console.log(banner_magenta);
 }
 
+export function trimBranchName(branch: string) {
+  return branch.replace(/^\*/, '');
+}
+
 /** private */
 function getBranches() {
   const branches = execSync('git branch --sort=committerdate').toString();
-  return branches;
+  return branches.split('\n').map((str) => str.trim());
+}
+
+function checkoutBranch(branch: string) {
+  return execSync(`git checkout ${branch}`);
 }

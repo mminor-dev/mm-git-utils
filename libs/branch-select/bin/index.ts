@@ -1,4 +1,4 @@
 #!/usr/bin/env npx ts-node-esm --experimental-specifier-resolution=node
 import main from '../src';
 
-main();
+await main();

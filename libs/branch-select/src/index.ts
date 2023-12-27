@@ -1,9 +1,9 @@
 import clear from 'clear';
 import branchSelect, { banner } from './lib/branch-select';
 
-export default function main() {
+export default async function main() {
   clear();
   banner();
 
-  branchSelect();
+  await branchSelect();
 }

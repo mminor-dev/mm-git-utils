@@ -14,9 +14,12 @@
         "assets": ["libs/branch-select/*.md"]
       }
     },
-    "run": {
-      "command": "{projectRoot}/bin/index.ts"
-    },
+    // "run": {
+    //   "executor": "nx:run-commands",
+    //   "options": {
+    //     "command": "{projectRoot}/bin/index.ts"
+    //   }
+    // },
     "pack": {
       "executor": "nx:run-commands",
       "options": {
