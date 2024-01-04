@@ -2,10 +2,18 @@
   "name": "@mmgit/branch-select",
   "version": "0.0.1",
   "dependencies": {
-    "@swc/helpers": "~0.5.2"
+    "@swc/helpers": "~0.5.2",
+    "chalk": "^5.3.0",
+    "clear": "^0.1.0",
+    "commander": "^11.1.0",
+    "enquirer": "^2.4.1",
+    "figlet": "^1.7.0",
+    "path": "^0.12.7",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.2.2"
   },
   "type": "module",
   "bin": {
-    "git-branch-select": "./bin/index.ts"
+    "mmgit-branch-select": "./bin/index.js"
   }
 }

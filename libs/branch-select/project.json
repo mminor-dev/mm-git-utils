@@ -23,9 +23,17 @@
     "pack": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["mkdir .packages", "npm pack dist/libs/branch-select  --pack-destination='.packages'"]
+        "commands": ["mkdir -p .packages", "npm pack dist/libs/branch-select  --pack-destination='.packages'"]
         // "cwd": "{workspaceRoot}/dist/libs/branch-select"
-      }
+      },
+      "dependsOn": ["build"]
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["npm i -g -- '.packages/mmgit-branch-select-0.0.1.tgz'"]
+      },
+      "dependsOn": ["pack"]
     },
     // "publish": {
     //   "command": "node tools/scripts/publish.mjs branch-select {args.ver} {args.tag}",
